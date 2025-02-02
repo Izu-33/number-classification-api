@@ -1,5 +1,5 @@
 const express = require('express');
-const { } = require('../controllers/numberController');
+const getProps = require('../controllers/numberController');
 
 const numberRouter = express.Router();
 

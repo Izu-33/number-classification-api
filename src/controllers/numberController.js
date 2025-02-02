@@ -1,12 +1,12 @@
+const axios = require('axios');
 const {
     isPrime,
     isPerfect,
     classifyNumber,
-    digitSum,
-    funFact
+    digitSum
 } = require('./numberFuncs');
 
-const getProps = (req, res) => {
+const getProps = async (req, res) => {
     const number = req.query.number;
 
     if (!number || isNaN(number)) {
@@ -16,13 +16,16 @@ const getProps = (req, res) => {
     const num = parseInt(number);
 
     try {
+        const funFactResponse = await axios.get(`http://numbersapi.com/${num}/math?json`);
+        const funFact = funFactResponse.data.text;
+
         res.status(200).json({
             number: num,
             is_prime: isPrime(num),
             is_perfect: isPerfect(num),
             properties: classifyNumber(num),
             digit_sum: digitSum(num),
-            fun_fact: funFact(num)
+            fun_fact: funFact
         });
     } catch (err) {
         res.status(500).json({ error: "Internal server error" });

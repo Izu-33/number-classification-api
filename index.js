@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { numberRouter } = require('./src/routes/numberRoute');
+const numberRouter = require('./src/routes/numberRoute');
 
 const PORT = 8000;
 

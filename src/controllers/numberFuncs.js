@@ -34,20 +34,9 @@ const digitSum = (num) => {
         .reduce((sum, digit) => sum + parseInt(digit), 0);
 };
 
-const funFact = async (num) => {
-    try {
-        const funFactResponse = await axios.get(`http://numbersapi.com/${num}/math?json`);
-        const funFact = funFactResponse.data.text;
-        return funFact;
-    } catch (err) {
-        res.status(400).json({message: 'Error fetching number fun fact'});
-    }
-};
-
 module.exports = {
     isPrime,
     isPerfect,
     classifyNumber,
-    digitSum,
-    funFact
+    digitSum
 };
