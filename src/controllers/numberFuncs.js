@@ -15,15 +15,17 @@ const isPerfect = (num) => {
 };
 
 const classifyNumber = (num) => {
-    const isArmstrong = num
-        .toString()
-        .split('')
-        .map(digit => Math.pow(parseInt(digit), num.toString().length))
+    const digits = num.toString().split('');
+    const numDigits = digits.length;
+
+    const isArmstrong = digits
+        .map(digit => Math.pow(parseInt(digit), numDigits))
         .reduce((a, b) => a + b, 0) === num;
 
     if (isArmstrong) {
         return num % 2 === 0 ? ["armstrong", "even"] : ["armstrong", "odd"];
     }
+
     return num % 2 === 0 ? ["even"] : ["odd"];
 };
 
