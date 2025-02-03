@@ -9,7 +9,7 @@ const {
 const getProps = async (req, res) => {
     const number = req.query.number;
 
-    if (/^\d+$/.test(number)) {
+    if (/^-?\d+$/.test(number)) {
         const num = parseInt(number);
 
         try {

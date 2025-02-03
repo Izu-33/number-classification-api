@@ -30,10 +30,12 @@ const classifyNumber = (num) => {
 };
 
 const digitSum = (num) => {
-    return num
-        .toString()
+    const isNegative = num < 0;
+    const numString = Math.abs(num).toString();
+
+    return numString
         .split('')
-        .reduce((sum, digit) => sum + parseInt(digit), 0);
+        .reduce((sum, digit) => sum + (isNegative ? -parseInt(digit) : parseInt(digit)), 0);
 };
 
 module.exports = {
